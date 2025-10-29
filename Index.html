@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Dino - Versão Dificuldade Progressiva</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-board">
+        <div id="background-cloud"></div> 
+        
+        <div id="ground"></div>
+        
+        <div id="dino"></div>
+        
+        <div id="score">00000</div>
+
+        <div id="game-over" class="hidden">
+            <h1>GAME OVER</h1>
+            <p>Seu Score Final: <span id="final-score">0</span></p>
+            <button onclick="window.location.reload()">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

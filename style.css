@@ -1,0 +1,177 @@
+/* Definições básicas para todo o corpo da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f7f7f7;
+    font-family: monospace;
+    overflow: hidden; 
+    user-select: none; 
+}
+
+/* O container principal do jogo (Céu Azul) */
+#game-board {
+    width: 600px; 
+    height: 300px; 
+    border: 3px solid #333;
+    position: relative;
+    overflow: hidden; 
+    background-color: skyblue; /* Fundo azul do céu */
+}
+
+/* Elemento de Nuvem Decorativa (Fundo que se move lentamente) */
+#background-cloud {
+    position: absolute;
+    top: 50px; 
+    left: 0;
+    width: 1200px; 
+    height: 50px;
+    background-image: url('clouds.png'); 
+    background-repeat: repeat-x; 
+    background-size: auto 50px; 
+    animation: cloud-move 15s linear infinite; 
+    opacity: 0.7; 
+}
+
+/* Animação para mover as nuvens de fundo */
+@keyframes cloud-move {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-600px); 
+    }
+}
+
+/* Chão/Plataforma (AGORA AZUL SÓLIDO) */
+#ground {
+    width: 1200px; 
+    height: 50px; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* ALTERAÇÃO: Fundo Azul Sólido */
+    background-color: dodgerblue; 
+    background-image: none;
+    /* Mantido o repeat-x e animação para simular o chão em movimento */
+    background-repeat: repeat-x; 
+    animation: ground-move 5s linear infinite; 
+}
+
+/* Animação para mover o chão */
+@keyframes ground-move {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-600px); 
+    }
+}
+
+/* Estilo do Personagem */
+#dino {
+    width: 50px; 
+    height: 60px;
+    position: absolute;
+    bottom: 50px; 
+    left: 50px;
+    background-image: url('sunleap_walkando-Recovered.gif'); 
+    background-size: cover;
+    z-index: 20; 
+}
+
+/* Animação de Pulo */
+.jump {
+    animation: jump-animation 0.6s ease-out;
+}
+
+@keyframes jump-animation {
+    0% { bottom: 50px; } 
+    40% { bottom: 170px; } 
+    60% { bottom: 170px; }
+    100% { bottom: 50px; }
+}
+
+/* --- NOVOS ELEMENTOS: OBSTÁCULO e MOEDA --- */
+
+/* Classe base para Obstáculos e Itens */
+.game-element {
+    position: absolute;
+    bottom: 50px; 
+    right: -30px; 
+    z-index: 10; 
+}
+
+/* Estilo do Espinho (Obstáculo: Game Over) */
+.espinho {
+    width: 30px;
+    height: 30px;
+    background: #555; 
+    clip-path: polygon(0 100%, 50% 0, 100% 100%); 
+}
+
+/* Estilo da Moeda (Item: Pontuação) */
+.moeda {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background-color: gold;
+    border: 3px solid orange;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+    animation: rotate 1s linear infinite; 
+}
+
+/* Animação de rotação para a moeda */
+@keyframes rotate {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+/* Estilo do Placar e Game Over */
+#score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    z-index: 100; 
+}
+
+#game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 200; 
+}
+
+.hidden {
+    display: none !important;
+}
+
+#game-over button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    border: none;
+    background-color: #4CAF50; 
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+}
+
+#game-over button:hover {
+    background-color: #45a049; 
+}
